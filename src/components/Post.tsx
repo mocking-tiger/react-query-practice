@@ -1,4 +1,4 @@
-import { PostType } from "./PostList";
+import { PostType } from "../types";
 import Card from "./Card";
 import styles from "./Post.module.css";
 import ContentInfo from "./ContentInfo";

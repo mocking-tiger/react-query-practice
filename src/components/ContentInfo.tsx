@@ -1,14 +1,6 @@
+import { UserType } from "../types";
 import styles from "./ContentInfo.module.css";
 import UserInfo from "./UserInfo";
-
-export type UserType = {
-  createdAt: number;
-  id: number;
-  name: string;
-  photo: string;
-  updatedAt: number;
-  username: string;
-};
 
 function formateDate(timestamp: number) {
   const fullDate = new Date(timestamp);

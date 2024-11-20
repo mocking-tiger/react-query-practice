@@ -1,32 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "../api";
+import { getPosts, getPostsByUsername } from "../api";
+import { PostType } from "../types";
+import { FEED_VARIANT } from "../value";
 import Post from "./Post";
 import styles from "./PostList.module.css";
 
-export type PostType = {
-  content: string;
-  createdAt: number;
-  id: number;
-  updatedAt: number;
-  user: {
-    createdAt: number;
-    id: number;
-    name: string;
-    photo: string;
-    updatedAt: number;
-    username: string;
-  };
-  userId: number;
-};
+export default function PostList({
+  variant = FEED_VARIANT.HOME_FEED,
+}: {
+  variant: string;
+}) {
+  let postsQueryKey;
+  let postsQueryFn;
 
-export default function PostList() {
+  if (variant === FEED_VARIANT.HOME_FEED) {
+    postsQueryKey = ["posts"];
+    postsQueryFn = getPosts;
+  } else if (variant === FEED_VARIANT.MY_FEED) {
+    const username = "codeit";
+    postsQueryKey = ["posts", username];
+    postsQueryFn = () => getPostsByUsername(username);
+  } else {
+    console.warn("제대로 확인하고 다시 해라 코드좀 잘 짜라");
+  }
+
   const { data: postsData } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
+    queryKey: postsQueryKey as string[],
+    queryFn: postsQueryFn,
   });
 
   const posts = postsData?.results ?? [];
-  console.log(posts);
 
   return (
     <div className={styles.postList}>
