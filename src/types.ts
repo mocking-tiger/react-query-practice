@@ -29,3 +29,20 @@ export type LoadingNErrorType = {
   title: string;
   description: string;
 };
+
+export type NewPostType = {
+  username: string;
+  content: string;
+};
+
+export type TextInputFormType = {
+  onSubmit: (content: string) => Promise<void>;
+  currentUserInfo: {
+    username: string;
+    name: string;
+    photo: string;
+  };
+  placeholder: string;
+  buttonText: string;
+  buttonDisabled: boolean;
+};
