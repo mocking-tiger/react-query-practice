@@ -22,3 +22,10 @@ export type UserType = {
   updatedAt: number;
   username: string;
 };
+
+export type LoadingNErrorType = {
+  className?: string;
+  variant?: string;
+  title: string;
+  description: string;
+};
