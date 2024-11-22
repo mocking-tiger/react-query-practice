@@ -29,3 +29,10 @@ export async function uploadPost(newPost: any) {
 
   return await response.json();
 }
+
+export async function getUserInfo(username: string) {
+  const response = await fetch(`${BASE_URL}/users/${username}`);
+  const jsonData = await response.json();
+  console.log(jsonData);
+  return jsonData;
+}
