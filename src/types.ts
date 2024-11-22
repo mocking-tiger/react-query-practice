@@ -1,3 +1,5 @@
+import React, { SetStateAction } from "react";
+
 export type PostType = {
   content: string;
   createdAt: number;
@@ -45,4 +47,9 @@ export type TextInputFormType = {
   placeholder: string;
   buttonText: string;
   buttonDisabled: boolean;
+};
+
+export type LoginContextType = {
+  currentUsername: string;
+  setCurrentUsername: React.Dispatch<SetStateAction<string>>;
 };

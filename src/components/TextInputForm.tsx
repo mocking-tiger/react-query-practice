@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { TextInputFormType } from "../types";
 import styles from "./TextInputForm.module.css";
 import ProfilePhoto from "./ProfilePhoto";
 import Button from "./Button";
@@ -10,7 +9,7 @@ export default function TextInputForm({
   placeholder,
   buttonText,
   buttonDisabled,
-}: TextInputFormType) {
+}: any) {
   const [content, setContent] = useState("");
 
   const handleSubmit = (e: any) => {

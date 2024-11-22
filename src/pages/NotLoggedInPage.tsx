@@ -14,7 +14,7 @@ export default function NotLoggedInPage() {
       />
       <div className={styles.link}>
         <Link to={"/"}>
-          <Button as="div">홈으로 가기</Button>
+          <Button>홈으로 가기</Button>
         </Link>
       </div>
     </Container>

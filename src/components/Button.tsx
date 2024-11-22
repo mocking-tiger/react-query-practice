@@ -6,13 +6,11 @@ export default function Button({
   disabled,
   type = "button",
   children,
-  as,
 }: {
   className?: string;
   disabled?: boolean;
   type?: "submit" | "button" | "reset" | undefined;
   children: React.ReactNode;
-  as: string;
 }) {
   return (
     <button

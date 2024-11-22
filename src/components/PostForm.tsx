@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { NewPostType } from "../types";
-import styles from "./PostForm.module.css";
+import { LoginContext } from "../context/LoginContext";
+import { useQueryClient } from "@tanstack/react-query";
+import { QUERY_KEYS } from "../value";
 import TextInputForm from "./TextInputForm";
+import styles from "./PostForm.module.css";
 
 export default function PostForm({
   onSubmit,
@@ -9,12 +13,12 @@ export default function PostForm({
   onSubmit: (newPost: NewPostType) => void;
   buttonDisabled: boolean;
 }) {
-  const currentUserInfo = {
-    username: "codeit",
-    name: "코드잇",
-    photo:
-      "https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/codestudit/001.png",
-  };
+  const { currentUsername } = useContext(LoginContext);
+  const queryClient = useQueryClient();
+  const currentUserInfo: any = queryClient.getQueryData([
+    QUERY_KEYS.USER_INFO,
+    currentUsername,
+  ]);
 
   const handleSubmit = async (content: string) => {
     const newPost = {
