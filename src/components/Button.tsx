@@ -4,13 +4,15 @@ import styles from "./Button.module.css";
 export default function Button({
   className,
   disabled,
-  type,
+  type = "button",
   children,
+  as,
 }: {
   className?: string;
-  disabled: boolean;
-  type: "submit" | "button" | "reset" | undefined;
+  disabled?: boolean;
+  type?: "submit" | "button" | "reset" | undefined;
   children: React.ReactNode;
+  as: string;
 }) {
   return (
     <button
