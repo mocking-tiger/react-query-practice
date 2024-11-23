@@ -25,7 +25,7 @@ export default function ContentInfo({
 }) {
   return (
     <div className={styles.info}>
-      <UserInfo name={user.name} photo={user.photo} />
+      <UserInfo name={user?.name} photo={user?.photo} />
       <div className={styles.date}>{formateDate(updatedTime)}</div>
     </div>
   );

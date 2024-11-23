@@ -28,7 +28,7 @@ export type UserType = {
 export type LoadingNErrorType = {
   className?: string;
   variant?: string;
-  title: string;
+  title?: string;
   description: string;
 };
 
@@ -48,4 +48,13 @@ export type TextInputFormType = {
 export type LoginContextType = {
   currentUsername: string;
   setCurrentUsername: React.Dispatch<SetStateAction<string>>;
+};
+
+export type CommentType = {
+  content: string;
+  createdAt: number;
+  id: number;
+  updatedAt: number;
+  user: UserType;
+  userId: number;
 };

@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import MyFeedPage from "./pages/MyFeedPage";
+import NotLoggedInPage from "./pages/NotLoggedInPage";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       children: [
         { index: true, element: <HomePage /> },
         { path: "my-feed", element: <MyFeedPage /> },
+        { path: "not-logged-in", element: <NotLoggedInPage /> },
       ],
     },
   ],
