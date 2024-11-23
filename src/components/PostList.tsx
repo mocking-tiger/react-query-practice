@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getPosts, getPostsByUsername, uploadPost } from "../api";
-import { PostType } from "../types";
+import { NewPostType, PostType } from "../types";
 import { FEED_VARIANT, QUERY_KEYS } from "../value";
 import { toast } from "react-toastify";
 import { LoginContext } from "../context/LoginContext";
@@ -45,13 +45,13 @@ export default function PostList({
   });
 
   const uploadPostMutation = useMutation({
-    mutationFn: (newPost) => uploadPost(newPost),
+    mutationFn: (newPost: NewPostType) => uploadPost(newPost),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
     },
   });
 
-  const handleUploadPost = (newPost: any) => {
+  const handleUploadPost = (newPost: NewPostType) => {
     uploadPostMutation.mutate(newPost, {
       onSuccess: () => toast.success("포스트가 성공적으로 등록되었습니다!"),
     });

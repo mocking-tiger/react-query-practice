@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { TextInputFormType } from "../types";
 import styles from "./TextInputForm.module.css";
 import ProfilePhoto from "./ProfilePhoto";
 import Button from "./Button";
@@ -9,10 +10,10 @@ export default function TextInputForm({
   placeholder,
   buttonText,
   buttonDisabled,
-}: any) {
+}: TextInputFormType) {
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit(content);
     setContent("");
@@ -22,8 +23,8 @@ export default function TextInputForm({
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <ProfilePhoto
-          photo={currentUserInfo?.photo}
-          name={currentUserInfo?.name}
+          photo={currentUserInfo.photo}
+          name={currentUserInfo.name}
         />
       </div>
       <textarea

@@ -1,3 +1,5 @@
+import { NewPostType } from "./types";
+
 const BASE_URL = "https://learn.codeit.kr/api/codestudit";
 
 export async function getPosts() {
@@ -14,7 +16,7 @@ export async function getPostsByUsername(username: string) {
   return jsonData;
 }
 
-export async function uploadPost(newPost: any) {
+export async function uploadPost(newPost: NewPostType) {
   const response = await fetch(`${BASE_URL}/posts`, {
     method: "POST",
     headers: {
@@ -33,6 +35,6 @@ export async function uploadPost(newPost: any) {
 export async function getUserInfo(username: string) {
   const response = await fetch(`${BASE_URL}/users/${username}`);
   const jsonData = await response.json();
-  console.log(jsonData);
+  // console.log(jsonData);
   return jsonData;
 }

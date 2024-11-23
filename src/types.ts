@@ -39,11 +39,7 @@ export type NewPostType = {
 
 export type TextInputFormType = {
   onSubmit: (content: string) => Promise<void>;
-  currentUserInfo: {
-    username: string;
-    name: string;
-    photo: string;
-  };
+  currentUserInfo: UserType;
   placeholder: string;
   buttonText: string;
   buttonDisabled: boolean;
