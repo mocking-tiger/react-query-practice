@@ -35,7 +35,7 @@ export default function CommentList({
   });
 
   const addCommentMutation = useMutation({
-    mutationFn: (newComment: any) => addComment(postId, newComment),
+    mutationFn: (newComment: NewPostType) => addComment(postId, newComment),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMENTS, postId],

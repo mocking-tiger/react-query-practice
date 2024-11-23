@@ -19,7 +19,7 @@ export default function PostForm({
     QUERY_KEYS.USER_INFO,
     currentUsername,
   ]);
-  console.log(currentUserInfo);
+  // console.log(currentUserInfo);
 
   const handleSubmit = async (content: string) => {
     const newPost = {

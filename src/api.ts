@@ -58,7 +58,7 @@ export async function getCommentsByPostId(
   return body;
 }
 
-export async function addComment(postId: number, newComment: any) {
+export async function addComment(postId: number, newComment: NewPostType) {
   const response = await fetch(`${BASE_URL}/posts/${postId}/comments`, {
     method: "POST",
     headers: {
