@@ -84,7 +84,7 @@ export async function addComment(postId: number, newComment: NewPostType) {
 }
 
 export async function getLikeCountByPostId(postId: number) {
-  const response = await fetch(`${BASE_URL}posts/${postId}/likes`);
+  const response = await fetch(`${BASE_URL}/posts/${postId}/likes`);
   const body = await response.json();
   return body.count;
 }
@@ -97,6 +97,7 @@ export async function getLikeStatusByUsername(
   if (response.status === 200) {
     return true;
   } else if (response.status === 404) {
+    console.log("김옥지");
     return false;
   } else {
     throw new Error("좋아요 상태 가져오기 실패");

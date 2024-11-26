@@ -10,7 +10,15 @@ export const QUERY_KEYS = {
   USER_INFO: "userInfo",
   COMMENT_COUNT: "commentCount",
   COMMENTS: "comments",
+  LIKE_COUNT: "likeCount",
+  LIKE_STATUS: "likeStatus",
 };
 
 export const COMMENTS_PAGE_LIMIT = 3;
+
 export const POSTS_PAGE_LIMIT = 3;
+
+export const USER_ACTION = {
+  LIKE_POST: "likePost",
+  UNLIKE_POST: "unlikePost",
+};
