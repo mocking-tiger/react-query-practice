@@ -61,6 +61,46 @@ export default function Post({ post }: { post: PostType }) {
         await unlikePost(postId, username);
       }
     },
+    onMutate: async ({ postId, username, userAction }) => {
+      await queryClient.cancelQueries({
+        queryKey: [QUERY_KEYS.LIKE_STATUS, postId],
+      });
+      await queryClient.cancelQueries({
+        queryKey: [QUERY_KEYS.LIKE_COUNT, postId],
+      });
+
+      const prevLikeStatus = queryClient.getQueryData([
+        QUERY_KEYS.LIKE_STATUS,
+        postId,
+        username,
+      ]);
+      const prevLikeCount = queryClient.getQueryData([
+        QUERY_KEYS.LIKE_COUNT,
+        postId,
+      ]);
+
+      queryClient.setQueryData(
+        [QUERY_KEYS.LIKE_STATUS, postId, username],
+        () => userAction === USER_ACTION.LIKE_POST
+      );
+      queryClient.setQueryData(
+        [QUERY_KEYS.LIKE_COUNT, postId],
+        (prev: number) =>
+          userAction === USER_ACTION.LIKE_POST ? prev + 1 : prev - 1
+      );
+
+      return { prevLikeStatus, prevLikeCount };
+    },
+    onError: (err, { postId, username }, context) => {
+      queryClient.setQueryData(
+        [QUERY_KEYS.LIKE_STATUS, postId, username],
+        context?.prevLikeStatus
+      );
+      queryClient.setQueryData(
+        [QUERY_KEYS.LIKE_COUNT, postId],
+        context?.prevLikeCount
+      );
+    },
     onSettled: (data, err, { postId, username }) => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.LIKE_STATUS, postId, username],
