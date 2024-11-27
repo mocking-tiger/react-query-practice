@@ -5,6 +5,7 @@ import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import MyFeedPage from "./pages/MyFeedPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
+import TestPage from "./components/Test";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
         { index: true, element: <HomePage /> },
         { path: "my-feed", element: <MyFeedPage /> },
         { path: "not-logged-in", element: <NotLoggedInPage /> },
+        { path: "tttest", element: <TestPage /> },
       ],
     },
   ],

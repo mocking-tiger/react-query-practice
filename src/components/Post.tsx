@@ -38,7 +38,7 @@ export default function Post({ post }: { post: PostType }) {
     queryKey: [QUERY_KEYS.LIKE_COUNT, post.id],
     queryFn: () => getLikeCountByPostId(post.id),
   });
-  console.log(likeCount);
+
   const { data: isPostLikedByCurrentUser } = useQuery({
     queryKey: [QUERY_KEYS.LIKE_STATUS, post.id, currentUsername],
     queryFn: () => getLikeStatusByUsername(post.id, currentUsername),
