@@ -33,6 +33,7 @@ export default function Post({ post }: { post: PostType }) {
     queryKey: [QUERY_KEYS.COMMENT_COUNT, post.id],
     queryFn: () => getCommentCountByPostId(post.id),
   });
+  console.log(post.id);
 
   const { data: likeCount } = useQuery({
     queryKey: [QUERY_KEYS.LIKE_COUNT, post.id],
